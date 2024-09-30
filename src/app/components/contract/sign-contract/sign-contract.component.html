@@ -42,15 +42,13 @@
       </div>
 
       <div class="flex flex-column gap-1 mb-4">
-        <canvas
-          id="signatureCanvas"
-          width="400"
-          height="200"
-          style="border: 1px solid #000"
-        ></canvas>
-        <p-button type="button" (click)="saveSignature()">{{
-          "SIGN_CONTRACT.SAVE_SIGNATURE" | translate
-        }}</p-button>
+        <app-drawing-canvas
+          (imageSaved)="saveSignature($event)"
+          (imageCleared)="clearSignature()"
+        ></app-drawing-canvas>
+        <small *ngIf="signForm.get('signature')?.invalid" class="p-error">
+          {{ "SIGN_CONTRACT.SIGNATURE_REQUIRED" | translate }}
+        </small>
       </div>
     </p-scrollPanel>
   </div>

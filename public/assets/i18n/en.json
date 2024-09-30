@@ -54,10 +54,12 @@
   },
   "SIGN_CONTRACT": {
     "TITLE": "Sign Contract",
+    "SIGN": "Sign",
     "VIEW_CONTRACT": "View Contract",
     "SAVE_SIGNATURE": "Save Signature",
     "SUBMIT": "Submit",
-    "REQUIRED_FIELD": "This field is required."
+    "REQUIRED_FIELD": "This field is required.",
+    "SIGNATURE_REQUIRED": "Please enter a signature and click save."
   },
   "UPLOAD_CONTRACT": {
     "TITLE": "Upload Contract",

@@ -1,0 +1,17 @@
+<div class="flex flex-column gap-2">
+  <div>
+    <h3>{{ "SIGN_CONTRACT.SIGN" | translate }}</h3>
+    <canvas
+      #canvas
+      (mousedown)="startDrawing($event)"
+      (mousemove)="draw($event)"
+      (mouseup)="stopDrawing()"
+      (mouseout)="stopDrawing()"
+      style="background: white; border: 1px solid black"
+    ></canvas>
+  </div>
+  <div class="flex gap-2">
+    <p-button severity="danger" (click)="clearCanvas()">Limpiar</p-button>
+    <p-button severity="success" (click)="saveCanvas()">Guardar</p-button>
+  </div>
+</div>

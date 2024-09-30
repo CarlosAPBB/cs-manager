@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
@@ -22,8 +22,13 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  @ViewChild('dashboard') dashboard!: DashboardComponent
 
   constructor(
     public appConfigService: AppConfigService
   ) { }
+
+  refreshDashboard() {
+    this.dashboard.loadContracts()
+  }
 }

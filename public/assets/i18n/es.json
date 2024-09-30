@@ -55,10 +55,12 @@
   },
   "SIGN_CONTRACT": {
     "TITLE": "Firmar Contrato",
+    "SIGN": "Firmar",
     "VIEW_CONTRACT": "Ver contrato",
     "SAVE_SIGNATURE": "Guardar Firma",
     "SUBMIT": "Enviar",
-    "REQUIRED_FIELD": "Este campo es obligatorio."
+    "REQUIRED_FIELD": "Este campo es obligatorio.",
+    "SIGNATURE_REQUIRED": "Por favor ingrese una firma y dé click en guardar."
   },
   "UPLOAD_CONTRACT": {
     "TITLE": "Subir Contrato",

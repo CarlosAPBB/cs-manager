@@ -12,6 +12,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
 import { ContractUtilsService } from '../../../service/contract-utils.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { DrawingCanvasComponent } from "../../shared/drawing-canvas/drawing-canvas.component";
 
 @Component({
   selector: 'app-sign-contract',
@@ -24,17 +25,17 @@ import { TranslateModule } from '@ngx-translate/core';
     CardModule,
     NgFor,
     NgIf,
-    TranslateModule
+    TranslateModule,
+    DrawingCanvasComponent
   ],
   templateUrl: './sign-contract.component.html',
   styleUrl: './sign-contract.component.scss'
 })
-export class SignContractComponent implements OnInit, AfterViewInit {
+export class SignContractComponent implements OnInit {
   signForm: FormGroup;
   contractId = 0;
   contract: any;
   dynamicFields: any[] = [];
-  canvas: HTMLCanvasElement | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -54,10 +55,6 @@ export class SignContractComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.contractId = +this.route.snapshot.paramMap.get('id')!;
     this.getContractDetails();
-  }
-
-  ngAfterViewInit(): void {
-    this.initializeCanvas();
   }
 
   getContractDetails() {
@@ -86,47 +83,16 @@ export class SignContractComponent implements OnInit, AfterViewInit {
     });
   }
 
-  initializeCanvas() {
-    this.canvas = document.getElementById('signatureCanvas') as HTMLCanvasElement;
-    const ctx = this.canvas.getContext('2d');
-
-    let drawing = false;
-
-    if (ctx) {
-      this.canvas.addEventListener('mousedown', () => {
-        if (!this.canvas) { return }
-
-        drawing = true;
-        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      });
-
-      this.canvas.addEventListener('mouseup', () => {
-        drawing = false;
-        ctx.beginPath();
-      });
-
-      this.canvas.addEventListener('mousemove', (event) => {
-        if (!this.canvas) { return }
-
-        if (drawing) {
-          ctx.lineWidth = 2;
-          ctx.lineCap = 'round';
-          ctx.strokeStyle = 'black';
-          ctx.lineTo(event.clientX - this.canvas.offsetLeft, event.clientY - this.canvas.offsetTop);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(event.clientX - this.canvas.offsetLeft, event.clientY - this.canvas.offsetTop);
-        }
-      });
-    }
+  saveSignature(base64: string) {
+    this.signForm.patchValue({
+      signature: base64
+    })
   }
 
-  saveSignature() {
-    if (this.canvas) {
-      this.signForm.patchValue({
-        signature: this.canvas.toDataURL('image/png')
-      })
-    }
+  clearSignature() {
+    this.signForm.patchValue({
+      signature: null
+    })
   }
 
   downloadContract() {
@@ -135,11 +101,14 @@ export class SignContractComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     if (this.signForm.valid) {
+      this.globalService.setLoadingState(true)
+
       const formData = {
         dynamic_fields: JSON.stringify(this.signForm.get("dynamicFields")?.value),
         signature: this.signForm.get("signature")?.value,
         contract_id: this.contractId
       };
+
       this.apiService.signContract(this.contractId, formData).subscribe({
         next: (res: any) => {
           this.toastService.success('Contrato firmado exitosamente', 'tr')
@@ -148,6 +117,10 @@ export class SignContractComponent implements OnInit, AfterViewInit {
         },
         error: (err: HttpErrorResponse) => {
           this.toastService.error()
+          this.globalService.setLoadingState(false)
+        },
+        complete: () => {
+          this.globalService.setLoadingState(false)
         }
       });
     }
