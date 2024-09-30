@@ -1,0 +1,14 @@
+<div class="px-3">
+  <h2>Enviados</h2>
+  <app-contract-list
+    [contracts]="contracts"
+    [serverLoading]="serverLoading"
+  ></app-contract-list>
+  <p-divider></p-divider>
+  <h2>Invitaciones</h2>
+  <app-invited-contract-list
+    [contracts]="invitedContracts"
+    [serverLoading]="serverLoading"
+    (contractRejected)="loadContracts()"
+  ></app-invited-contract-list>
+</div>

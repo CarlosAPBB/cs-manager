@@ -1,0 +1,15 @@
+<div class="flex flex-column h-full">
+  <div class="flex justify-content-between align-items-center gap-4 px-3">
+    <h1>{{ "CONTRACTS.MY_CONTRACTS" | translate }}</h1>
+    <p-button
+      icon="pi pi-plus"
+      label="{{ 'CONTRACTS.UPLOAD_NEW' | translate }}"
+      [routerLink]="['contract-form']"
+    ></p-button>
+  </div>
+  <div class="flex-grow-1 overflow-hidden">
+    <p-scrollPanel styleClass="w-full h-full">
+      <app-dashboard></app-dashboard>
+    </p-scrollPanel>
+  </div>
+</div>

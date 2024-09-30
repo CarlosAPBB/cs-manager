@@ -1,0 +1,78 @@
+{
+  "TITLE": "¡Bienvenido a nuestra aplicación!",
+  "LANG": {
+    "LANGUAGE": "Idioma",
+    "ES": "Español",
+    "EN": "Inglés"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "EMAIL": "Email",
+    "PASSWORD": "Contraseña",
+    "BUTTON": "Ingresar",
+    "NO_ACCOUNT": "¿No tienes una cuenta?",
+    "REGISTER": "Regístrate"
+  },
+  "REGISTER": {
+    "TITLE": "Registrar usuario",
+    "USERNAME": "Nombre de usuario",
+    "EMAIL": "Email",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_PROMPT": "Elige una contraseña",
+    "WEAK": "Débil",
+    "MEDIUM": "Media",
+    "STRONG": "Fuerte",
+    "PASSWORD_CONFIRMATION": "Confirmar contraseña",
+    "PASSWORD_MISMATCH": "Las contraseñas no coinciden.",
+    "BUTTON": "Registrar"
+  },
+  "CONTRACTS": {
+    "MY_CONTRACTS": "Mis Contratos",
+    "NAME": "Nombre",
+    "STATUS": "Estado",
+    "ACTIONS": "Acciones",
+    "SIGNED": "Firmado",
+    "SEE-SIGNATURE": "Ver firma",
+    "DOWNLOAD_SIGNED": "Descargar Firmado",
+    "DOWNLOAD_ORIGINAL": "Descargar original",
+    "UPLOAD_NEW": "Subir Nuevo Contrato",
+    "PENDING": "Pendiente",
+    "SIGN": "Firmar",
+    "REJECT": "Rechazar",
+    "REJECTED": "Rechazado"
+  },
+  "TABLE": {
+    "NAME": "Nombre",
+    "STATUS": "Estado",
+    "ACTIONS": "Acciones",
+    "PENDING": "Pendiente",
+    "SIGNED": "Firmado",
+    "REJECTED": "Rechazado",
+    "SIGN_BUTTON": "Firmar",
+    "DOWNLOAD_ORIGINAL": "Descargar original",
+    "DOWNLOAD_SIGNED": "Descargar doc. firmado",
+    "REJECT_BUTTON": "Rechazar"
+  },
+  "SIGN_CONTRACT": {
+    "TITLE": "Firmar Contrato",
+    "VIEW_CONTRACT": "Ver contrato",
+    "SAVE_SIGNATURE": "Guardar Firma",
+    "SUBMIT": "Enviar",
+    "REQUIRED_FIELD": "Este campo es obligatorio."
+  },
+  "UPLOAD_CONTRACT": {
+    "TITLE": "Subir Contrato",
+    "RECIPIENT": "Destinatario",
+    "RECIPIENT_REQUIRED": "El correo del destinatario es obligatorio",
+    "CONTRACT_NAME": "Nombre del Contrato",
+    "CONTRACT_NAME_REQUIRED": "El nombre del contrato es requerido",
+    "CONTRACT_FILE": "Archivo del Contrato",
+    "FILE_REQUIRED": "Por favor seleccione un archivo PDF",
+    "CHOOSE_LABEL": "Seleccionar",
+    "CANCEL_LABEL": "Cancelar",
+    "DYNAMIC_FIELDS": "Campos Dinámicos",
+    "LABEL_PLACEHOLDER": "Etiqueta",
+    "ADD_DYNAMIC_FIELD": "Agregar Campo Dinámico",
+    "SUBMIT": "Subir Contrato"
+  }
+}

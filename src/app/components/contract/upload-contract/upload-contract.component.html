@@ -1,0 +1,112 @@
+<form
+  class="flex flex-column h-full px-3"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="flex">
+    <h2 class="mt-2 mb-3">{{ "UPLOAD_CONTRACT.TITLE" | translate }}</h2>
+  </div>
+  <div class="flex-grow-1 overflow-hidden">
+    <p-scrollPanel styleClass="w-full h-full">
+      <div class="flex flex-column gap-2 mb-4">
+        <label for="email">{{ "UPLOAD_CONTRACT.RECIPIENT" | translate }}</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          pInputText
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('email')?.invalid && form.get('email')?.touched
+          }"
+        />
+        <small
+          *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+          class="p-error"
+        >
+          {{ "UPLOAD_CONTRACT.RECIPIENT_REQUIRED" | translate }}
+        </small>
+      </div>
+      <div class="flex flex-column gap-2 mb-4">
+        <label for="name">{{
+          "UPLOAD_CONTRACT.CONTRACT_NAME" | translate
+        }}</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          pInputText
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('name')?.invalid && form.get('name')?.touched
+          }"
+        />
+        <small
+          *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+          class="p-error"
+        >
+          {{ "UPLOAD_CONTRACT.CONTRACT_NAME_REQUIRED" | translate }}
+        </small>
+      </div>
+
+      <div class="flex flex-column gap-2 mb-4">
+        <label for="file">{{
+          "UPLOAD_CONTRACT.CONTRACT_FILE" | translate
+        }}</label>
+        <p-fileUpload
+          (onSelect)="onFileChange($event)"
+          (onClear)="clearFile()"
+          (onRemove)="clearFile()"
+          accept="application/pdf"
+          maxFileSize="1000000"
+          [showUploadButton]="false"
+          chooseLabel="{{ 'UPLOAD_CONTRACT.CHOOSE_LABEL' | translate }}"
+          cancelLabel="{{ 'UPLOAD_CONTRACT.CANCEL_LABEL' | translate }}"
+        >
+        </p-fileUpload>
+        <small *ngIf="form.get('file')?.invalid" class="p-error">
+          {{ "UPLOAD_CONTRACT.FILE_REQUIRED" | translate }}
+        </small>
+      </div>
+
+      <h3>{{ "UPLOAD_CONTRACT.DYNAMIC_FIELDS" | translate }}</h3>
+      <div class="flex flex-column gap-2 mb-3">
+        <div
+          formArrayName="dynamicFields"
+          *ngFor="let field of dynamicFields.controls; let i = index"
+        >
+          <div class="flex gap-2" [formGroupName]="i">
+            <input
+              formControlName="label"
+              placeholder="{{
+                'UPLOAD_CONTRACT.LABEL_PLACEHOLDER' | translate
+              }}"
+              pInputText
+            />
+            <button
+              type="button"
+              (click)="removeDynamicField(i)"
+              pButton
+              icon="pi pi-times"
+              class="p-button-danger"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        (click)="addDynamicField()"
+        pButton
+        label="{{ 'UPLOAD_CONTRACT.ADD_DYNAMIC_FIELD' | translate }}"
+      ></button>
+    </p-scrollPanel>
+  </div>
+  <div class="flex justify-content-end mt-2">
+    <button
+      type="submit"
+      pButton
+      label="{{ 'UPLOAD_CONTRACT.SUBMIT' | translate }}"
+      [disabled]="form.invalid"
+    ></button>
+  </div>
+</form>

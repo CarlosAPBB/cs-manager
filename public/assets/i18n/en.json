@@ -1,0 +1,77 @@
+{
+  "TITLE": "Welcome to our application!",
+  "LANG": {
+    "LANGUAGE": "Language",
+    "ES": "Spanish",
+    "EN": "English"
+  },
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "BUTTON": "Log In",
+    "NO_ACCOUNT": "Don't have an account?",
+    "REGISTER": "Register"
+  },
+  "REGISTER": {
+    "TITLE": "Register User",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PASSWORD_PROMPT": "Choose a password",
+    "WEAK": "Weak",
+    "MEDIUM": "Medium",
+    "STRONG": "Strong",
+    "PASSWORD_CONFIRMATION": "Confirm Password",
+    "PASSWORD_MISMATCH": "Passwords do not match.",
+    "BUTTON": "Register"
+  },
+  "CONTRACTS": {
+    "MY_CONTRACTS": "My Contracts",
+    "NAME": "Name",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "SIGNED": "Signed",
+    "DOWNLOAD_SIGNED": "Download Signed Document",
+    "DOWNLOAD_ORIGINAL": "Download Original",
+    "UPLOAD_NEW": "Upload New Contract",
+    "PENDING": "Pending",
+    "SIGN": "Sign",
+    "REJECT": "Reject",
+    "REJECTED": "Rejected"
+  },
+  "TABLE": {
+    "NAME": "Name",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "PENDING": "Pending",
+    "SIGNED": "Signed",
+    "REJECTED": "Rejected",
+    "SIGN_BUTTON": "Sign",
+    "DOWNLOAD_ORIGINAL": "Download Original",
+    "DOWNLOAD_SIGNED": "Download Signed Document",
+    "REJECT_BUTTON": "Reject"
+  },
+  "SIGN_CONTRACT": {
+    "TITLE": "Sign Contract",
+    "VIEW_CONTRACT": "View Contract",
+    "SAVE_SIGNATURE": "Save Signature",
+    "SUBMIT": "Submit",
+    "REQUIRED_FIELD": "This field is required."
+  },
+  "UPLOAD_CONTRACT": {
+    "TITLE": "Upload Contract",
+    "RECIPIENT": "Recipient",
+    "RECIPIENT_REQUIRED": "Recipient email is required",
+    "CONTRACT_NAME": "Contract Name",
+    "CONTRACT_NAME_REQUIRED": "Contract name is required",
+    "CONTRACT_FILE": "Contract File",
+    "FILE_REQUIRED": "Please select a PDF file",
+    "CHOOSE_LABEL": "Select",
+    "CANCEL_LABEL": "Cancel",
+    "DYNAMIC_FIELDS": "Dynamic Fields",
+    "LABEL_PLACEHOLDER": "Label",
+    "ADD_DYNAMIC_FIELD": "Add Dynamic Field",
+    "SUBMIT": "Upload Contract"
+  }
+}

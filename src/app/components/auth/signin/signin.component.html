@@ -1,0 +1,104 @@
+<div class="flex justify-content-center my-5 px-3">
+  <p-card
+    header="{{ 'REGISTER.TITLE' | translate }}"
+    [style]="{ width: '360px' }"
+  >
+    <form
+      class="flex flex-column py-2"
+      style="width: auto; max-width: 500px"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="username">
+          {{ "REGISTER.USERNAME" | translate }}
+          <span *ngIf="form.get('name')?.hasError('required')">*</span>
+        </label>
+        <input
+          class="w-full"
+          pInputText
+          id="username"
+          formControlName="name"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('name')?.invalid && form.get('name')?.touched
+          }"
+        />
+      </div>
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="email">
+          {{ "REGISTER.EMAIL" | translate }}
+          <span *ngIf="form.get('email')?.hasError('required')">*</span>
+        </label>
+        <input
+          class="w-full"
+          pInputText
+          id="email"
+          type="email"
+          formControlName="email"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('email')?.invalid && form.get('email')?.touched
+          }"
+        />
+      </div>
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="password">
+          {{ "REGISTER.PASSWORD" | translate }}
+          <span *ngIf="form.get('password')?.hasError('required')">*</span>
+        </label>
+        <p-password
+          inputId="password"
+          formControlName="password"
+          promptLabel="{{ 'REGISTER.PASSWORD_PROMPT' | translate }}"
+          weakLabel="{{ 'REGISTER.WEAK' | translate }}"
+          mediumLabel="{{ 'REGISTER.MEDIUM' | translate }}"
+          strongLabel="{{ 'REGISTER.STRONG' | translate }}"
+          [toggleMask]="true"
+          [feedback]="true"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('password')?.invalid && form.get('password')?.touched
+          }"
+        >
+        </p-password>
+      </div>
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="passwordConfirmation">
+          {{ "REGISTER.PASSWORD_CONFIRMATION" | translate }}
+          <span *ngIf="form.get('passwordConfirmation')?.hasError('required')">
+            *
+          </span>
+        </label>
+        <p-password
+          inputId="passwordConfirmation"
+          formControlName="passwordConfirmation"
+          [toggleMask]="true"
+          [feedback]="false"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              form.get('passwordConfirmation')?.invalid &&
+              form.get('passwordConfirmation')?.touched ||
+              form.errors?.['notMatching']
+          }"
+        >
+        </p-password>
+        <small
+          *ngIf="form.errors?.['notMatching'] && form.get('passwordConfirmation')?.touched"
+          class="p-error"
+        >
+          {{ "REGISTER.PASSWORD_MISMATCH" | translate }}
+        </small>
+      </div>
+      <div class="flex justify-content-center mb-4">
+        <p-button class="text-center" type="submit" [disabled]="form.invalid">{{
+          "REGISTER.BUTTON" | translate
+        }}</p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

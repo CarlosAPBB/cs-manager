@@ -1,0 +1,58 @@
+<p-table
+  [value]="contracts"
+  [loading]="serverLoading"
+  styleClass="p-datatable-gridlines"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>{{ "CONTRACTS.NAME" | translate }}</th>
+      <th [width]="50">{{ "CONTRACTS.STATUS" | translate }}</th>
+      <th [width]="500">{{ "CONTRACTS.ACTIONS" | translate }}</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-contract>
+    <tr>
+      <td>{{ contract.name }}</td>
+      <td [width]="50">
+        <p-tag
+          *ngIf="contract.status === 'pending'"
+          severity="warning"
+          [value]="'CONTRACTS.PENDING' | translate"
+        ></p-tag>
+        <p-tag
+          *ngIf="contract.status === 'signed'"
+          severity="success"
+          [value]="'CONTRACTS.SIGNED' | translate"
+        ></p-tag>
+        <p-tag
+          *ngIf="contract.status === 'rejected'"
+          severity="danger"
+          [value]="'CONTRACTS.REJECTED' | translate"
+        ></p-tag>
+      </td>
+      <td [width]="500" class="flex justify-content-end gap-2">
+        <p-button
+          *ngIf="contract.status !== 'signed'"
+          icon="pi pi-cloud-download"
+          [label]="'CONTRACTS.DOWNLOAD_ORIGINAL' | translate"
+          severity="secondary"
+          (click)="downloadContract(contract.id)"
+        ></p-button>
+        <ng-container *ngIf="contract.status === 'signed'">
+          <p-button
+            icon="pi pi-cloud-download"
+            [label]="'CONTRACTS.DOWNLOAD_SIGNED' | translate"
+            severity="info"
+            (click)="downloadSignedContract(contract.id)"
+          ></p-button>
+          <p-button
+            icon="pi pi-file-edit"
+            [label]="'CONTRACTS.SEE-SIGNATURE' | translate"
+            severity="warning"
+            (click)="downloadSignature(contract.id)"
+          ></p-button>
+        </ng-container>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

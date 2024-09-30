@@ -1,0 +1,37 @@
+<div class="flex justify-content-center my-8 px-3">
+  <p-card header="{{ 'LOGIN.TITLE' | translate }}" [style]="{ width: '360px' }">
+    <form
+      class="flex flex-column py-2"
+      style="width: auto; max-width: 500px"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="email">{{ "LOGIN.EMAIL" | translate }}</label>
+        <input class="w-full" pInputText id="email" formControlName="email" />
+      </div>
+      <div class="flex flex-column gap-2 mb-3">
+        <label for="password">{{ "LOGIN.PASSWORD" | translate }}</label>
+        <p-password
+          formControlName="password"
+          [toggleMask]="true"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [feedback]="false"
+        >
+        </p-password>
+      </div>
+      <div class="flex justify-content-center mb-4">
+        <p-button class="text-center" type="submit">{{
+          "LOGIN.BUTTON" | translate
+        }}</p-button>
+      </div>
+      <div class="flex flex-column text-center">
+        <small>{{ "LOGIN.NO_ACCOUNT" | translate }}</small>
+        <p-button [link]="true" [routerLink]="['/register']">
+          {{ "LOGIN.REGISTER" | translate }}
+        </p-button>
+      </div>
+    </form>
+  </p-card>
+</div>
